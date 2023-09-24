@@ -1,0 +1,14 @@
+{
+  "cSpell.words": [
+    "Behaviour",
+    "meshbonerebind",
+    "novavoidhowl",
+    "Spawnable"
+  ],
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.rulers": [
+    120
+  ],
+  "editor.tabSize": 2
+}

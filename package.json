@@ -1,0 +1,21 @@
+{
+  "author": {
+    "email": "me@novavoidhowl.com",
+    "name": "NovaVoidHowl",
+    "url": "https://novavoidhowl.uk/"
+  },
+  "changelogUrl": "https://github.com/NovaVoidHowl/NavMesh-Follower-Setup/releases",
+  "description": "Script to automate the setup of the components needed to make a nav mesh follower",
+  "displayName": "NavMesh Follower Setup",
+  "documentationUrl": "https://github.com/NovaVoidHowl/NavMesh-Follower-Setup/blob/main/README.md",
+  "keywords": [],
+  "licensesUrl": "https://github.com/NovaVoidHowl/NavMesh-Follower-Setup/blob/main/LICENSE.md",
+  "name": "uk.novavoidhowl.dev.navmeshfollowersetup",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NovaVoidHowl/NavMesh-Follower-Setup.git"
+  },
+  "unity": "2021.3",
+  "unityRelease": "23f1",
+  "version": "0.0.1"
+}
