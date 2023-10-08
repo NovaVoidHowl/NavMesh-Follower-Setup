@@ -1,8 +1,8 @@
 {
   "name": "uk.novavoidhowl.dev.navmeshfollowersetup.editor",
   "references": [
-    "uk.novavoidhowl.dev.navmeshfollowersetup.runtime",
-    "UnityEngine.CoreModule"
+    "UnityEngine.CoreModule",
+    "UnityEditor.CoreModule"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
