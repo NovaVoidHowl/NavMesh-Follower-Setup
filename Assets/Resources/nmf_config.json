@@ -1,0 +1,181 @@
+{
+  "follower_level_data": [
+    {
+      "agent_path": "",
+      "animator_file_path": "",
+      "blank_avatar": false,
+      "display_name": "Un-Configured",
+      "ik_root_path": "",
+      "ik_script_path": "",
+      "left_hand_attach_point_path": "",
+      "look_at_path": "",
+      "needs_FinalIK": false,
+      "right_hand_attach_point_path": "",
+      "sub_syncs": []
+    },
+    {
+      "agent_path": "NavMeshAgent",
+      "animator_file_path": "Assets\\kafeijao\\Followers\\CVRChan\\CVRChan_Example_Animator.controller",
+      "blank_avatar": true,
+      "display_name": "Simple Follower",
+      "ik_root_path": "",
+      "ik_script_path": "",
+      "left_hand_attach_point_path": "",
+      "look_at_path": "",
+      "needs_FinalIK": false,
+      "right_hand_attach_point_path": "",
+      "sub_syncs": [
+        {
+          "object_path": "NavMeshAgent",
+          "sync_flags": [
+            "TransformX",
+            "TransformY",
+            "TransformZ",
+            "RotationY"
+          ]
+        }
+      ]
+    },
+    {
+      "agent_path": "[NavMeshFollower]/NavMeshAgent",
+      "animator_file_path": "Assets\\kafeijao\\Followers\\Taipan\\Taipan_Example_Animator.controller",
+      "blank_avatar": true,
+      "display_name": "LookAt IK",
+      "ik_root_path": "",
+      "ik_script_path": "",
+      "left_hand_attach_point_path": "",
+      "look_at_path": "[NavMeshFollower]/LookAtTarget [Raw]",
+      "needs_FinalIK": true,
+      "right_hand_attach_point_path": "",
+      "sub_syncs": [
+        {
+          "object_path": "[NavMeshFollower]/NavMeshAgent",
+          "sync_flags": [
+            "TransformX",
+            "TransformY",
+            "TransformZ",
+            "RotationY"
+          ]
+        },
+        {
+          "object_path": "[NavMeshFollower]/LookAtTarget [Raw]",
+          "sync_flags": [
+            "TransformX",
+            "TransformY",
+            "TransformZ"
+          ]
+        }
+      ]
+    },
+    {
+      "agent_path": "[NavMeshFollower]/NavMeshAgent [Raw]",
+      "animator_file_path": "Assets\\kafeijao\\Followers\\Kyle\\Kyle_Example_Animator.controller",
+      "blank_avatar": false,
+      "display_name": "LookAt IK + VRIK",
+      "ik_root_path": "[NavMeshFollower]/VRIK",
+      "ik_script_path": "[NavMeshFollower]/VRIK/Scripts",
+      "left_hand_attach_point_path": "[NavMeshFollower]/LeftHandAttachmentPoint",
+      "look_at_path": "[NavMeshFollower]/LookAtTarget [Raw]",
+      "needs_FinalIK": true,
+      "right_hand_attach_point_path": "[NavMeshFollower]/RightHandAttachmentPoint",
+      "sub_syncs": [
+        {
+          "object_path": "[NavMeshFollower]/NavMeshAgent [Raw]",
+          "sync_flags": [
+            "TransformX",
+            "TransformY",
+            "TransformZ",
+            "RotationY"
+          ]
+        },
+        {
+          "object_path": "[NavMeshFollower]/LookAtTarget [Raw]",
+          "sync_flags": [
+            "TransformX",
+            "TransformY",
+            "TransformZ"
+          ]
+        },
+        {
+          "object_path": "[NavMeshFollower]/VRIK/Targets/LeftArm [Raw]",
+          "sync_flags": [
+            "TransformX",
+            "TransformY",
+            "TransformZ"
+          ]
+        },
+        {
+          "object_path": "[NavMeshFollower]/VRIK/Targets/RightArm [Raw]",
+          "sync_flags": [
+            "TransformX",
+            "TransformY",
+            "TransformZ"
+          ]
+        }
+      ]
+    }
+  ],
+  "ik_variables": [
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [
+        3
+      ],
+      "name": "VRIK/LeftArm/Weight"
+    },
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [
+        3
+      ],
+      "name": "VRIK/RightArm/Weight"
+    }
+  ],
+  "variables": [
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [
+        3
+      ],
+      "name": "MovementX"
+    },
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [
+        2,
+        3
+      ],
+      "name": "MovementY"
+    },
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [],
+      "name": "Grounded"
+    },
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [],
+      "name": "Idle"
+    },
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [],
+      "name": "HasNavMeshFollowerMod"
+    },
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [],
+      "name": "IsBakingNavMesh"
+    },
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [],
+      "name": "VRIK/LeftArm/Weight"
+    },
+    {
+      "default_value": "0",
+      "mandatory_for_levels": [],
+      "name": "VRIK/RightArm/Weight"
+    }
+  ]
+}

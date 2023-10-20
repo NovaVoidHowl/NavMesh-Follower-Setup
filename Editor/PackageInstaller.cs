@@ -1,3 +1,6 @@
+// this whole file is only to be used in edit mode
+#if UNITY_EDITOR
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -41,3 +44,4 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     }
   }
 }
+#endif

@@ -1,3 +1,6 @@
+// this whole file is only to be used in edit mode
+#if UNITY_EDITOR
+
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -6,13 +9,14 @@ using UnityEngine;
 
 namespace uk.novavoidhowl.dev.navmeshfollowersetup
 {
+  [ExecuteInEditMode]
   public class NMFToolSetup : EditorWindow
   {
     private List<PackageDependency> predefinedDependencies = new List<PackageDependency>
     {
       new PackageDependency(
         "uk.novavoidhowl.dev.common",
-        "https://github.com/NovaVoidHowl/Common-Unity-Resources.git#1.0.0"
+        "https://github.com/NovaVoidHowl/Common-Unity-Resources.git#1.0.1"
       ),
       // Add more dependencies as needed
     };
@@ -167,3 +171,4 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     }
   }
 }
+#endif

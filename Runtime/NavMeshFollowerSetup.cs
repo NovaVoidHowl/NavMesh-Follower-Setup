@@ -1,15 +1,77 @@
 ﻿#if UNITY_EDITOR
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace uk.novavoidhowl.dev.navmeshfollowersetup
 {
+  // Define data objects to hold the JSON config file data
+  [System.Serializable]
+  public class NmfConfig
+  {
+    public FollowerLevelData[] follower_level_data;
+    public NmfConfigVariable[] variables;
+    public NmfConfigVariable[] ik_variables;
+  }
+
+  [System.Serializable]
+  public class FollowerLevelData
+  {
+    public string animator_file_path;
+    public bool needs_FinalIK;
+    public string display_name;
+    public NmfSubSync[] sub_syncs;
+    public string agent_path;
+    public string look_at_path;
+    public string ik_script_path;
+    public string ik_root_path;
+    public string left_hand_attach_point_path;
+    public string right_hand_attach_point_path;
+    public bool blank_avatar;
+  }
+
+  [System.Serializable]
+  public class NmfSubSync
+  {
+    public string object_path;
+    public string[] sync_flags;
+  }
+
+  [System.Serializable]
+  public class NmfConfigVariable
+  {
+    public string name;
+    public string default_value;
+    public int[] mandatory_for_levels;
+    public bool enabled = false;
+  }
+
   [ExecuteInEditMode]
   public class NavMeshFollowerSetup : MonoBehaviour
   {
+    public bool extendedInfoShow = false;
+
     public GameObject navMeshFollowerBody;
     public Transform headBone;
+
+    public bool handIKsectionShow = false;
+    public bool leftHandIKsectionShow = false;
+    public bool leftHandIKenabled = false;
+    public bool rightHandIKsectionShow = false;
+    public bool rightHandIKenabled = false;
+    public Transform leftHand;
+    public Transform rightHand;
+
+    public bool showAttachmentPointSection = false;
+    public bool showLeftHandAttachmentPointGizmos = false;
+    public bool showRightHandAttachmentPointGizmos = false;
+    public bool leftHandAttachmentPointPositionAndRotationSectionShow = false;
+    public bool rightHandAttachmentPointPositionAndRotationSectionShow = false;
+    public float positionStep = 0.1f;
+
+    public Avatar avatar;
+
     public int followerLevel = 0;
 
     // level 0 = un-configured
@@ -20,26 +82,18 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     public bool versionsShow = false;
     public bool animatorSectionShow = false;
 
-    // Mod Supported variable enable/disable
-    //
-    // MovementY - Value between -1.0 and 1.0 depending on the velocity forward. It will be 0.0 when not moving.
-    // MovementX - Value between -1.0 and 1.0 depending on the velocity sideways. It will be 0.0 when not moving.
-    // Grounded - This will be 0.0 if the Follower is jumping across a nav mesh link, 1.0 otherwise.
-    // Idle - This will be 0.0 if the Follower is busy doing something, 1.0 otherwise.
-    // HasNavMeshFollowerMod - 0.0 when then Follower Spawner doesn't have the mod installed (or has an old version), 1.0 otherwise.
-    // IsBakingNavMesh - This value will be 1.0 when the nav mesh is baking for this follower, 0.0 otherwise.
-    // VRIK/LeftArm/Weight - This will be 1.0 when the follower is controlling the left arm with the VRIK script, 0.0 otherwise.
-    // VRIK/RightArm/Weight - This will be 1.0 when the follower is controlling the right arm with the VRIK script, 0.0 otherwise.
+    //need to store the values as which variables are supported by the mod may change
+    public NmfConfigVariable[] nmfConfigVariables = new NmfConfigVariable[0];
 
-    public bool MovementX_enabled = false;
-    public bool MovementY_enabled = false;
-    public bool Grounded_enabled = false;
-    public bool Idle_enabled = false;
-    public bool HasNavMeshFollowerMod_enabled = false;
-    public bool IsBakingNavMesh_enabled = false;
-    public bool VRIK_LeftArm_Weight_enabled = false;
-    public bool VRIK_RightArm_Weight_enabled = false;
+    //need to store the values as which variables are supported by the mod may change
+    public NmfConfigVariable[] nmfIKVariables = new NmfConfigVariable[0];
+
+    //variable store for parameters that exist in the animator controller
+    public NmfConfigVariable[] nmfAnimatorControllerVariables = new NmfConfigVariable[0];
+
     public bool ModSupportedVariableSectionShow = false;
+    public bool CustomVariableSectionShow = false;
+    public bool ModSupportedIKVariableSectionShow = false;
 
     public float agent_speed = 3f;
     public float agent_angularSpeed = 240f;
