@@ -15,7 +15,8 @@ The readme for the CCK plugin for this is https://github.com/kafeijao/Kafe_CVR_C
 
 3> Paste in the git url of this repo `https://github.com/NovaVoidHowl/NavMesh-Follower-Setup.git`
 
-![image](https://github.com/NovaVoidHowl/Mesh-Bone-Rebind/assets/31048789/de07970b-7649-4789-aa7b-fc2a00622551)
+![image](https://github.com/NovaVoidHowl/NavMesh-Follower-Setup/assets/31048789/8412f39a-0c95-4bff-84fa-e3a4d0cf65da)
+
 
 4> Click the add button
 
