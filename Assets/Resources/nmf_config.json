@@ -3,7 +3,7 @@
     {
       "agent_path": "",
       "animator_file_path": "",
-      "blank_avatar": false,
+      "blank_avatar": true,
       "display_name": "Un-Configured",
       "ik_root_path": "",
       "ik_script_path": "",
