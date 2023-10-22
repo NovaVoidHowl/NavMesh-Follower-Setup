@@ -1,4 +1,4 @@
-// Version: 1.0.1
+// Version: 1.1.14
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -47,6 +47,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       setupNMFSpawnableSubSync(navMeshFollowerSetup, scriptRootObject);
       setupHandsIK(navMeshFollowerSetup, navMeshFollowerBody);
       setupVRIKScripts(navMeshFollowerSetup, navMeshFollowerBody);
+      setupVRIKTargets(navMeshFollowerSetup, navMeshFollowerBody);
       updateFollowerInfoLevelThree(scriptRootObject, navMeshFollowerSetup);
 
     }
@@ -114,7 +115,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         navMeshFollowerInfoComponent.hasRightArmIK = true;
 
         // set the navMeshFollowerInfoComponent.vrikRightArmTargetTransform to navMeshFollowerSetup.rightHand
-        navMeshFollowerInfoComponent.vrikRightArmTargetTransform = navMeshFollowerSetup.rightHand;
+        navMeshFollowerInfoComponent.vrikRightArmTargetTransform = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].ik_right_arm_raw_path);
 
         // set the navMeshFollowerInfoComponent.rightHandAttachmentPoint to the right hand attachment point gameObject
         navMeshFollowerInfoComponent.rightHandAttachmentPoint = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].right_hand_attach_point_path);
@@ -127,7 +128,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         navMeshFollowerInfoComponent.hasLeftArmIK = true;
 
         // set the navMeshFollowerInfoComponent.vrikLeftArmTargetTransform to navMeshFollowerSetup.leftHand
-        navMeshFollowerInfoComponent.vrikLeftArmTargetTransform = navMeshFollowerSetup.leftHand;
+        navMeshFollowerInfoComponent.vrikLeftArmTargetTransform = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].ik_left_arm_raw_path);
 
         // set the navMeshFollowerInfoComponent.leftHandAttachmentPoint to the left hand attachment point gameObject
         navMeshFollowerInfoComponent.leftHandAttachmentPoint = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].left_hand_attach_point_path);
@@ -233,6 +234,109 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
 
         }
       }
+    }
+
+    private void setupVRIKTargets(NavMeshFollowerSetup navMeshFollowerSetup, GameObject navMeshFollowerBody)
+    {
+      // get navMeshFollowerSetup.leftHand
+      GameObject leftHand = navMeshFollowerSetup.leftHand.gameObject;
+
+      // get navMeshFollowerSetup.rightHand
+      GameObject rightHand = navMeshFollowerSetup.rightHand.gameObject;
+
+
+      // section for left hand
+      // check if navMeshFollowerSetup.leftHand is not null and leftHandIKenabled is true
+      if (navMeshFollowerSetup.leftHand != null && navMeshFollowerSetup.leftHandIKenabled == true)
+      {
+        // get the LeftArm[Raw] gameObject
+        GameObject leftArmRaw = navMeshFollowerSetup.gameObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].ik_left_arm_raw_path)?.gameObject;
+
+        // get the ParentConstraint component on the leftArmRaw gameObject
+        ParentConstraint leftArmRawParentConstraint = leftArmRaw.GetComponent<ParentConstraint>();
+
+        // check if the leftArmRawParentConstraint is null
+        if (!leftArmRawParentConstraint == null)
+        {
+          // constraint exists so remove it
+          // remove parent constraint component
+          DestroyImmediate(leftArmRawParentConstraint);
+        }
+
+        // add parent constraint component
+        leftArmRaw.AddComponent<ParentConstraint>();
+
+        // for each source on the constraint, remove it
+        while (leftArmRawParentConstraint.sourceCount > 0)
+        {
+            leftArmRawParentConstraint.RemoveSource(0);
+        }
+
+        // get the ParentConstraint component on the leftArmRaw gameObject (as we just recreated it)
+        leftArmRawParentConstraint = leftArmRaw.GetComponent<ParentConstraint>();
+
+        // ensure the constraint is deactivated
+        leftArmRawParentConstraint.constraintActive = false;
+
+        // set the leftArmRaw parent constraint source to the left hand gameObject
+        leftArmRawParentConstraint.AddSource(new ConstraintSource { sourceTransform = leftHand.transform, weight = 1 });
+
+        // set the position of the leftArmRaw to the position of the left hand
+        leftArmRaw.transform.position = leftHand.transform.position;
+        leftArmRaw.transform.rotation = leftHand.transform.rotation;
+
+        // active the leftArmRaw parent constraint
+        leftArmRawParentConstraint.constraintActive = true;
+      }
+
+
+      // section for right hand
+      // check if navMeshFollowerSetup.rightHand is not null and rightHandIKenabled is true
+      if (navMeshFollowerSetup.rightHand != null && navMeshFollowerSetup.rightHandIKenabled == true)
+      {
+        // get the RightArm[Raw] gameObject
+        GameObject rightArmRaw = navMeshFollowerSetup.gameObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].ik_right_arm_raw_path)?.gameObject;
+
+        // get the ParentConstraint component on the rightArmRaw gameObject
+        ParentConstraint rightArmRawParentConstraint = rightArmRaw.GetComponent<ParentConstraint>();
+
+        // check if the rightArmRawParentConstraint is null
+        if (!rightArmRawParentConstraint == null)
+        {
+          // constraint exists so remove it
+          // remove parent constraint component
+          DestroyImmediate(rightArmRawParentConstraint);
+        }
+
+        // add parent constraint component
+        rightArmRaw.AddComponent<ParentConstraint>();
+
+        // for each source on the constraint, remove it
+        while (rightArmRawParentConstraint.sourceCount > 0)
+        {
+            rightArmRawParentConstraint.RemoveSource(0);
+        }
+
+        // get the ParentConstraint component on the rightArmRaw gameObject (as we just recreated it)
+        rightArmRawParentConstraint = rightArmRaw.GetComponent<ParentConstraint>();
+
+        // ensure the constraint is deactivated
+        rightArmRawParentConstraint.constraintActive = false;
+
+        // set the rightArmRaw parent constraint source to the right hand gameObject
+        rightArmRawParentConstraint.AddSource(new ConstraintSource { sourceTransform = rightHand.transform, weight = 1 });
+
+        // set the position of the rightArmRaw to the position of the right hand
+        rightArmRaw.transform.position = rightHand.transform.position;
+        rightArmRaw.transform.rotation = rightHand.transform.rotation;
+
+        // active the rightArmRaw parent constraint
+        rightArmRawParentConstraint.constraintActive = true;
+      }
+
+
+
+
     }
 
     private void snapLeftHandAttachmentPointToHand(NavMeshFollowerSetup navMeshFollowerSetup)
