@@ -296,7 +296,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         ParentConstraint leftArmRawParentConstraint = leftArmRaw.GetComponent<ParentConstraint>();
 
         // check if the leftArmRawParentConstraint is null
-        if (!leftArmRawParentConstraint == null)
+        if (leftArmRawParentConstraint != null)
         {
           // constraint exists so remove it
           // remove parent constraint component
@@ -305,12 +305,6 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
 
         // add parent constraint component
         leftArmRaw.AddComponent<ParentConstraint>();
-
-        // for each source on the constraint, remove it
-        while (leftArmRawParentConstraint.sourceCount > 0)
-        {
-            leftArmRawParentConstraint.RemoveSource(0);
-        }
 
         // get the ParentConstraint component on the leftArmRaw gameObject (as we just recreated it)
         leftArmRawParentConstraint = leftArmRaw.GetComponent<ParentConstraint>();
@@ -341,7 +335,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         ParentConstraint rightArmRawParentConstraint = rightArmRaw.GetComponent<ParentConstraint>();
 
         // check if the rightArmRawParentConstraint is null
-        if (!rightArmRawParentConstraint == null)
+        if (rightArmRawParentConstraint != null)
         {
           // constraint exists so remove it
           // remove parent constraint component
@@ -350,12 +344,6 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
 
         // add parent constraint component
         rightArmRaw.AddComponent<ParentConstraint>();
-
-        // for each source on the constraint, remove it
-        while (rightArmRawParentConstraint.sourceCount > 0)
-        {
-            rightArmRawParentConstraint.RemoveSource(0);
-        }
 
         // get the ParentConstraint component on the rightArmRaw gameObject (as we just recreated it)
         rightArmRawParentConstraint = rightArmRaw.GetComponent<ParentConstraint>();
