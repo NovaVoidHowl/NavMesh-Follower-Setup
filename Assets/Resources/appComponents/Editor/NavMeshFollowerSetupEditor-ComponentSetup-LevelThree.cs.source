@@ -1,4 +1,4 @@
-// Version: 1.1.14
+// Version: 1.1.45
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -170,15 +170,55 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
           rightHandAttachmentPointParentConstraint.RemoveSource(0);
       }
 
-      // set the left hand attachment point parent constraint source to the left hand gameObject
-      leftHandAttachmentPointParentConstraint.AddSource(new ConstraintSource { sourceTransform = leftHand.transform, weight = 1 });
+      // left hand section
+      // get the current offset of the left hand attachment point parent constraint
+      //Vector3 leftHandTranslationOffset = leftHandAttachmentPointParentConstraint.transform.position - leftHand.transform.position;
 
-      // set the right hand attachment point parent constraint source to the right hand gameObject
-      rightHandAttachmentPointParentConstraint.AddSource(new ConstraintSource { sourceTransform = rightHand.transform, weight = 1 });
+      // create a new source for the left hand attachment point parent constraint
+      ConstraintSource leftHandSource = new ConstraintSource { sourceTransform = leftHand.transform, weight = 1 };
+      leftHandAttachmentPointParentConstraint.AddSource(leftHandSource);
 
-      // activate the parent constraints
-      leftHandAttachmentPointParentConstraint.constraintActive = true;
-      rightHandAttachmentPointParentConstraint.constraintActive = true;
+      // set the translation offsets for the left hand attachment point parent constraint
+      //leftHandAttachmentPointParentConstraint.SetTranslationOffset(0, leftHandTranslationOffset);
+
+      // right hand section
+      // get the current offset of the right hand attachment point parent constraint
+     // Vector3 rightHandTranslationOffset = rightHandAttachmentPointParentConstraint.transform.position - rightHand.transform.position;
+
+      // create a new source for the right hand attachment point parent constraint
+      ConstraintSource rightHandSource = new ConstraintSource { sourceTransform = rightHand.transform, weight = 1 };
+      rightHandAttachmentPointParentConstraint.AddSource(rightHandSource);
+
+      // set the translation offsets for the right hand attachment point parent constraint
+      //rightHandAttachmentPointParentConstraint.SetTranslationOffset(0, rightHandTranslationOffset);
+
+
+      // Use reflection to get the ActivateAndPreserveOffset method on RightHandAttachmentPointParentConstraint
+      var methodInfoRH = typeof(ParentConstraint).GetMethod("ActivateAndPreserveOffset", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+      if (methodInfoRH != null)
+      {
+          methodInfoRH.Invoke(rightHandAttachmentPointParentConstraint, null);
+          DebugConsoleLog("RH Parent Constraint activated!");
+      }
+      else
+      {
+          Debug.LogError("Right Hand Failed to find the ActivateAndPreserveOffset method on ParentConstraint");
+      }
+
+      // Use reflection to get the ActivateAndPreserveOffset method on LeftHandAttachmentPointParentConstraint
+      var methodInfoLH = typeof(ParentConstraint).GetMethod("ActivateAndPreserveOffset", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+      if (methodInfoLH != null)
+      {
+          methodInfoLH.Invoke(leftHandAttachmentPointParentConstraint, null);
+          DebugConsoleLog("LH Parent Constraint activated!");
+      }
+      else
+      {
+          Debug.LogError("Left Hand Failed to find the ActivateAndPreserveOffset method on ParentConstraint");
+      }
+
     }
 
     private void setupVRIKScripts(NavMeshFollowerSetup navMeshFollowerSetup, GameObject navMeshFollowerBody)
