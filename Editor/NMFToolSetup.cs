@@ -372,10 +372,11 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       EditorGUILayout.LabelField("Final IK", EditorStyles.boldLabel);
       EditorGUILayout.Space(5);
       //info box to stay that final ik (or the stub) is required for level 2 and 3
-      EditorGUILayout.HelpBox(
-        "Final IK (or the stub) is required for level 2 and 3. If you don't have it installed, you can still use level 1.",
-        MessageType.Info
-      );
+      // EditorGUILayout.HelpBox(
+      //   "Final IK (or the stub) is required for level 2 and 3. If you don't have it installed, you can still use level 1.",
+      //   MessageType.Info
+      // );
+
 
       // check if final ik is installed, by checking the scripting define symbol 'NVH_FIK_EXISTS'
       if (scriptingDefines.Contains("NVH_FIK_EXISTS"))
