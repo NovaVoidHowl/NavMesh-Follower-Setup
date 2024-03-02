@@ -1,4 +1,4 @@
-// { "version": "1.0.3" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_VALIDATE", dependencies: []}
+// { "version": "1.0.4" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_VALIDATE", dependencies: []}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -185,7 +185,11 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     //Function to check if finalik is installed
     private bool isFinalIKInstalled()
     {
-      return (Directory.Exists(Constants.finalIK_folder));
+      return (
+        PlayerSettings
+          .GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup)
+          .Contains("NVH_FIK_EXISTS")
+      );
     }
 
     // Function to check if there is a child object with name "NavMeshAgent" for the game object on which this script is attached

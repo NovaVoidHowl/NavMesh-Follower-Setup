@@ -28,7 +28,6 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup.packagecore
     public const string configFilePath_primary= "Assets/Kafeijao/nmf_config.json";
     public const string configFilePath_fallback="Packages/uk.novavoidhowl.dev.navmeshfollowersetup/Assets/Resources/nmf_config.json";
     public const int maxFollowerLevel = 3;
-    public const string finalIK_folder = "Assets/Plugins/RootMotion";
     public const bool debug_mode = false;
 
     public const string progress_bar_fill_color = "#ff4500";
