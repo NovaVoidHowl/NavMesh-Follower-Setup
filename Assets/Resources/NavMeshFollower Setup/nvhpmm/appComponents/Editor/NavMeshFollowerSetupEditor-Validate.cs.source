@@ -1,4 +1,4 @@
-// { "version": "1.0.4" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_VALIDATE", dependencies: []}
+// { "version": "2.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_VALIDATE", dependencies: []}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -73,11 +73,19 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             validData = false;
             }
           }
-          if(level.look_at_path != null)
+          if(level.look_at_path_raw != null)
           {
-            if(level.look_at_path != "")
+            if(level.look_at_path_raw != "")
             {
-            Debug.LogError("Null/Empty look_at_path expected for level 0");
+            Debug.LogError("Null/Empty look_at_path_raw expected for level 0");
+            validData = false;
+            }
+          }
+          if(level.look_at_path_smooth != null)
+          {
+            if(level.look_at_path_smooth != "")
+            {
+            Debug.LogError("Null/Empty look_at_path_smooth expected for level 0");
             validData = false;
             }
           }
@@ -101,15 +109,25 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             Debug.LogError("Null animator_file_path found for level " + levelCount);
             validData = false;
           }
-          // if a level has needs_FinalIK set to true then the look_at_path should not be null
+          // if a level has needs_FinalIK set to true then the look_at_path_smooth should not be null
           if(level.needs_FinalIK == true)
           {
-            if(level.look_at_path == null || level.look_at_path == "")
+            if(level.look_at_path_smooth == null || level.look_at_path_smooth == "")
             {
               Debug.LogError("Null look_at_path found for level " + levelCount);
               validData = false;
             }
           }
+          // if a level has needs_FinalIK set to true then the look_at_path_raw should not be null
+          if(level.needs_FinalIK == true)
+          {
+            if(level.look_at_path_raw == null || level.look_at_path_raw == "")
+            {
+              Debug.LogError("Null look_at_path found for level " + levelCount);
+              validData = false;
+            }
+          }
+
         }
         levelCount++;
       }

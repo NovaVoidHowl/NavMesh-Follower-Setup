@@ -1,4 +1,4 @@
-// { "version": "1.1.45" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_L3", dependencies: ["NVH_FIK_EXISTS"]}
+// { "version": "2.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_L3", dependencies: ["NVH_FIK_EXISTS"]}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -91,7 +91,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       FollowerInfo navMeshFollowerInfoComponent = scriptRootObject.GetComponent<FollowerInfo>();
 
       // get the 'LookAtTarget [Raw]' gameObject under the navMeshFollowerConfigObject
-      GameObject lookAtTargetRaw = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path)?.gameObject;
+      GameObject lookAtTargetRaw = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path_raw)?.gameObject;
 
       // Update the NavMeshFollowerInfo component
       navMeshFollowerInfoComponent.spawnable =

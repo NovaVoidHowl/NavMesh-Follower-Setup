@@ -13,7 +13,8 @@
       "ik_script_path": "",
       "ik_target_path": "",
       "left_hand_attach_point_path": "",
-      "look_at_path": "",
+      "look_at_path_raw": "",
+      "look_at_path_smooth": "",
       "needs_FinalIK": false,
       "right_hand_attach_point_path": "",
       "sub_syncs": []
@@ -31,7 +32,8 @@
       "ik_script_path": "",
       "ik_target_path": "",
       "left_hand_attach_point_path": "",
-      "look_at_path": "",
+      "look_at_path_raw": "",
+      "look_at_path_smooth": "",
       "needs_FinalIK": false,
       "right_hand_attach_point_path": "",
       "sub_syncs": [
@@ -59,7 +61,8 @@
       "ik_script_path": "",
       "ik_target_path": "",
       "left_hand_attach_point_path": "",
-      "look_at_path": "[NavMeshFollower]/LookAtTarget [Raw]",
+      "look_at_path_raw": "[NavMeshFollower]/LookAtTarget [Raw]",
+      "look_at_path_smooth": "[NavMeshFollower]/LookAtTarget [Smooth]",
       "needs_FinalIK": true,
       "right_hand_attach_point_path": "",
       "sub_syncs": [
@@ -95,7 +98,8 @@
       "ik_script_path": "[NavMeshFollower]/VRIK/Scripts",
       "ik_target_path": "[NavMeshFollower]/VRIK/Targets",
       "left_hand_attach_point_path": "[NavMeshFollower]/LeftHandAttachmentPoint",
-      "look_at_path": "[NavMeshFollower]/LookAtTarget [Raw]",
+      "look_at_path_raw": "[NavMeshFollower]/LookAtTarget [Raw]",
+      "look_at_path_smooth": "[NavMeshFollower]/LookAtTarget [Smooth]",
       "needs_FinalIK": true,
       "right_hand_attach_point_path": "[NavMeshFollower]/RightHandAttachmentPoint",
       "sub_syncs": [

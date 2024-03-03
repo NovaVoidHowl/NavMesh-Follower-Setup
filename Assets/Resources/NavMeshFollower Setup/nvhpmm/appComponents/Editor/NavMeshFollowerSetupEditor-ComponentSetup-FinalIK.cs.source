@@ -1,4 +1,4 @@
-// { "version": "1.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_FINALIK", dependencies: ["NVH_FIK_EXISTS"]}
+// { "version": "2.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_FINALIK", dependencies: ["NVH_FIK_EXISTS"]}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -10,6 +10,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 using uk.novavoidhowl.dev.navmeshfollowersetup;
 using uk.novavoidhowl.dev.navmeshfollowersetup.packagecore;
+using Constants = uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.Constants;
+using static uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.CoreUtils;
 // using NVHCommonUI = uk.novavoidhowl.dev.common.ui;
 
 // Dynamic loads
@@ -33,18 +35,18 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     private void addNMFLookAtIK(NavMeshFollowerSetup navMeshFollowerSetup, GameObject scriptRootObject, GameObject navMeshFollowerBody )
     {
       LookAtIK lookAtIKComponent = null;
-      // get the 'LookAtTarget [Raw]' gameObject under the navMeshFollowerConfigObject
-      Transform lookAtTargetRaw = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path)?.gameObject.transform;
-      // check if lookAtTargetRaw has is null
-      if (lookAtTargetRaw == null)
+      // get the 'LookAtTarget' gameObject under the navMeshFollowerConfigObject
+      Transform lookAtTarget = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path_smooth)?.gameObject.transform;
+      // check if lookAtTarget has is null
+      if (lookAtTarget == null)
       {
         // show error message popup
-        EditorUtility.DisplayDialog("Error", NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path + " not found", "OK");
+        EditorUtility.DisplayDialog("Error", NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path_smooth + " not found", "OK");
       }
       else
       {
-        //print the fact that we found the lookAtTargetRaw to the console
-        DebugConsoleLog("Found " + NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path);
+        //print the fact that we found the lookAtTarget to the console
+        DebugConsoleLog("Found " + NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path_smooth);
       }
 
       // check if navMeshFollowerBody has a LookAtIK component
@@ -58,7 +60,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       lookAtIKComponent = navMeshFollowerBody.GetComponent<LookAtIK>();
 
       // set the LookAtIK component properties
-      lookAtIKComponent.solver.target = lookAtTargetRaw;
+      lookAtIKComponent.solver.target = lookAtTarget;
       lookAtIKComponent.solver.headWeight = 1;
       lookAtIKComponent.solver.eyesWeight = 1;
       lookAtIKComponent.solver.bodyWeight = 0.5f;

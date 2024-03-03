@@ -23,7 +23,8 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     public string display_name;
     public NmfSubSync[] sub_syncs;
     public string agent_path;
-    public string look_at_path;
+    public string look_at_path_raw;
+    public string look_at_path_smooth;
     public string ik_script_path;
     public string ik_target_path;
     public string ik_left_arm_raw_path;

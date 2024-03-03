@@ -1,4 +1,4 @@
-// { "version": "1.1.5" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_CORE", dependencies: []}
+// { "version": "2.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_CORE", dependencies: []}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -447,17 +447,17 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     private void updateLookAtTargetPosition(NavMeshFollowerSetup navMeshFollowerSetup, GameObject scriptRootObject, GameObject navMeshFollowerBody)
     {
       // get the 'LookAtTarget [Raw]' gameObject under the navMeshFollowerConfigObject
-      Transform lookAtTargetRaw = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path)?.gameObject.transform;
+      Transform lookAtTargetRaw = scriptRootObject.transform.Find(NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path_raw)?.gameObject.transform;
       // check if lookAtTargetRaw is null
       if (lookAtTargetRaw == null)
       {
         // show error message popup
-        EditorUtility.DisplayDialog("Error", NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path + " not found", "OK");
+        EditorUtility.DisplayDialog("Error", NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path_raw + " not found", "OK");
       }
       else
       {
         //print the fact that we found the lookAtTargetRaw to the console
-        DebugConsoleLog("Found" + NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path);
+        DebugConsoleLog("Found" + NMFSConfig.follower_level_data[navMeshFollowerSetup.followerLevel].look_at_path_raw);
       }
 
       // get the 'LookAtTarget [Raw] -> Offset' gameObject under the lookAtTargetRaw gameObject
