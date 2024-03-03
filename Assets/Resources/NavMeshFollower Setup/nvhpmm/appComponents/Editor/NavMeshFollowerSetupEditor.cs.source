@@ -1,4 +1,4 @@
-// { "version": "1.0.15" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CORE", dependencies: []}
+// { "version": "1.2.7" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CORE", dependencies: []}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -50,6 +50,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     SerializedProperty spineBones;
 
     NmfConfig NMFSConfig = null;
+    NmfConfig FallbackNMFSConfig = null;
 
 
 
@@ -177,6 +178,13 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
           string jsonString = File.ReadAllText(Constants.configFilePath_fallback);
           // Deserialize the JSON data into an object
           NMFSConfig = JsonUtility.FromJson<NmfConfig>(jsonString);
+
+          // label to show the version of the primary config file
+          GUILayout.Label("Primary Config File Version: Unknown");
+          // label to show the version of the fallback config file
+          GUILayout.Label("Fallback Config File Version: " + NMFSConfig.config_version);
+          // label to show that the fallback config file is being used
+          GUILayout.Label("Active Config File: Fallback");
         }
       }
       else
@@ -186,6 +194,121 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
 
         // Deserialize the JSON data into an object
         NMFSConfig = JsonUtility.FromJson<NmfConfig>(jsonString);
+
+        // check if fallback config file exists
+        if (!isConfigFileExistsInPackagesFolder())
+        {
+          // fallback config file does not exist, so show warning message
+          EditorGUILayout.HelpBox(
+            "Fallback config file not found." +
+            "\nPlease re-install NavMesh Follower setup package.",
+            MessageType.Warning
+          );
+        }
+
+        FallbackNMFSConfig = JsonUtility.FromJson<NmfConfig>(File.ReadAllText(Constants.configFilePath_fallback));
+
+        // get the version from the primary config file
+        string primaryConfigVersion = NMFSConfig.config_version;
+
+        // get the version from the fallback config file
+        string fallbackConfigVersion = FallbackNMFSConfig.config_version;
+
+        // convert both version strings to semantic versioning
+        Version primaryConfigVersionSemantic = new Version(primaryConfigVersion);
+        Version fallbackConfigVersionSemantic = new Version(fallbackConfigVersion);
+
+        // label to show the version of the primary config file and the fallback config file
+        GUILayout.Label("Primary Config File Version: " + primaryConfigVersion);
+        GUILayout.Label("Fallback Config File Version: " + fallbackConfigVersion);
+
+        // compare the two versions
+        if (primaryConfigVersionSemantic.CompareTo(fallbackConfigVersionSemantic) < 0)
+        {
+          // primary config file version is less than fallback config file version
+          // warn the user that the primary config file is out of date
+          // prompt the user to choose to use the fallback config file
+          //option popup
+
+          // check if the user has seen the dialog
+          if (!EditorPrefs.GetBool("NMFSConfigSelectUserOptionSeen", false))
+          {
+            // show the dialog
+            int option = EditorUtility.DisplayDialogComplex(
+              "Primary Config File is out of date",
+              "Choose an option",
+              "Use Primary Config File",
+              "Use Fallback Config File",
+              "Use Fallback and Update primary"
+            );
+
+            // Save the option selected
+            EditorPrefs.SetInt("NMFSConfigSelectUserOption", option);
+            // save the fact that the user has seen the dialog
+            EditorPrefs.SetBool("NMFSConfigSelectUserOptionSeen", true);
+
+            // check the option selected
+            switch (option)
+            {
+              case 0:
+                // use the primary config file
+                
+                break;
+              case 1:
+                // use the fallback config file
+                NMFSConfig = FallbackNMFSConfig;
+                break;
+              case 2:
+                // use the fallback config file
+                NMFSConfig = FallbackNMFSConfig;
+                // save the fallback config file to the primary config file
+                File.WriteAllText(Constants.configFilePath_primary, File.ReadAllText(Constants.configFilePath_fallback));
+                break;
+            }
+
+            
+          }
+          else
+          {
+            // get the option selected
+            int option = EditorPrefs.GetInt("NMFSConfigSelectUserOption", 0);
+
+            // check the option selected
+            switch (option)
+            {
+              case 0:
+                // use the primary config file
+                break;
+              case 1:
+                // use the fallback config file
+                NMFSConfig = FallbackNMFSConfig;
+                break;
+              case 2:
+                // use the fallback config file
+                NMFSConfig = FallbackNMFSConfig;
+                // save the fallback config file to the primary config file
+                File.WriteAllText(Constants.configFilePath_primary, File.ReadAllText(Constants.configFilePath_fallback));
+                break;
+            }
+          }
+
+          // label to show version in use, depending on the option selected
+          if (EditorPrefs.GetInt("NMFSConfigSelectUserOption", 0) == 0)
+          {
+            GUILayout.Label("Active Config File: Primary");
+          }
+          else
+          {
+            GUILayout.Label("Active Config File: Fallback");
+          }
+          
+        }
+        else
+        {
+          // primary config file version is greater than or equal to fallback config file version
+          // label to show that the primary config file is being used
+          GUILayout.Label("Active Config File: Primary");
+        }
       }
 
 
@@ -197,7 +320,6 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         MessageType.Error);
         return;
       }
-
 
       if (!isCvrCckExists())
       {

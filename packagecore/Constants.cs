@@ -25,7 +25,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup.packagecore
   
     // app specific constants
     public const string generatedAnimatorsPath = "Assets/NMF/GeneratedAnimators/";
-    public const string configFilePath_primary= "Assets/Kafeijao/nmf_config.json";
+    public const string configFilePath_primary= "Assets/Kafeijao/Followers/nmf_config.json";
     public const string configFilePath_fallback="Packages/uk.novavoidhowl.dev.navmeshfollowersetup/Assets/Resources/nmf_config.json";
     public const int maxFollowerLevel = 3;
     public const bool debug_mode = false;

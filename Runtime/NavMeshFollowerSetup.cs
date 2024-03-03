@@ -10,6 +10,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
   [System.Serializable]
   public class NmfConfig
   {
+    public string config_version = "0.0.0";
     public FollowerLevelData[] follower_level_data;
     public NmfConfigVariable[] variables;
     public NmfConfigVariable[] ik_variables;
