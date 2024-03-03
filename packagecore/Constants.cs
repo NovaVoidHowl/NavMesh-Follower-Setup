@@ -31,6 +31,8 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup.packagecore
     public const bool debug_mode = false;
 
     public const string progress_bar_fill_color = "#ff4500";
+
+    public const string LEGACY_APP_COMPONENTS_PATH = "Assets/NovaVoidHowl/NavMeshFollowerSetup";
   
   }  
 }
