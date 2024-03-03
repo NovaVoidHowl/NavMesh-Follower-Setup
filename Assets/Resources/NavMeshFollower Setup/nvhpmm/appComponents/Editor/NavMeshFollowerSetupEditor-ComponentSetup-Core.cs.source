@@ -1,4 +1,4 @@
-// { "version": "2.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_CORE", dependencies: []}
+// { "version": "2.0.1" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_CORE", dependencies: []}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -10,6 +10,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 using uk.novavoidhowl.dev.navmeshfollowersetup;
 using uk.novavoidhowl.dev.navmeshfollowersetup.packagecore;
+using Constants = uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.Constants;
+using static uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.CoreUtils;
 // using NVHCommonUI = uk.novavoidhowl.dev.common.ui;
 
 // Dynamic loads
@@ -46,7 +48,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       {
         // Add parent constraint to navMeshFollowerBody
         parentConstraint = navMeshFollowerBody.AddComponent<ParentConstraint>();
-        Debug.Log("added parent constraint to navMeshFollowerBody");
+        CoreLog("added parent constraint to navMeshFollowerBody");
       }
       else
       {
@@ -101,7 +103,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       parentConstraint.SetTranslationOffset(0, Vector3.zero);
       parentConstraint.SetRotationOffset(0, Vector3.zero);
       parentConstraint.constraintActive = true;
-      Debug.Log("updating parent constraint on navMeshFollowerBody");
+      CoreLog("updating parent constraint on navMeshFollowerBody");
     }
 
     //function to ensure that the folder for generated animators exists
@@ -438,7 +440,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       // disable navmeshagent component
       agent.enabled = false; // locked
 
-      Debug.Log("Updated NavMeshAgent");
+      CoreLog("Updated NavMeshAgent");
     }
 
 
@@ -499,7 +501,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       else
       {
         //print the fact that we found the leftEyeBone to the console
-        Debug.Log("Found leftEyeBone");
+        CoreLog("Found leftEyeBone");
 
         // zero out the position and rotation of the lookAtTargetRawOffset
         lookAtTargetRawOffset.transform.localPosition = Vector3.zero;

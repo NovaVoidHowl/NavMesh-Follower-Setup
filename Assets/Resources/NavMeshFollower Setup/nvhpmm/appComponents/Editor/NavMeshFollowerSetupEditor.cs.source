@@ -1,4 +1,4 @@
-// { "version": "1.0.13" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CORE", dependencies: []}
+// { "version": "1.0.15" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CORE", dependencies: []}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -17,6 +17,8 @@ using AnimatorControllerParameterType = UnityEngine.AnimatorControllerParameterT
 using uk.novavoidhowl.dev.navmeshfollowersetup;
 using uk.novavoidhowl.dev.navmeshfollowersetup.nvhpmm;
 using uk.novavoidhowl.dev.navmeshfollowersetup.packagecore;
+using Constants = uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.Constants;
+using static uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.CoreUtils;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -239,7 +241,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             if (GUILayout.Button("Set Follower Body to " + animatorComponent.gameObject.name))
             {
               navMeshFollowerSetup.navMeshFollowerBody = animatorComponent.gameObject;
-              Debug.Log("Set Follower Body to " + animatorComponent.gameObject.name);
+              CoreLog("Set Follower Body to " + animatorComponent.gameObject.name);
 
               // disable the other game objects from the list
               foreach (Animator animatorComponent2 in animatorComponents)
@@ -345,7 +347,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
           // Add CVRSpawnable component to scriptRootObject
           CVRSpawnableComponent = scriptRootObject.AddComponent<CVRSpawnable>();
           // console message to say that missing CVRSpawnable component was added
-          Debug.Log("Added CVRSpawnable component to " + scriptRootObject.name);
+          CoreLog("Added CVRSpawnable component to " + scriptRootObject.name);
         }
 
         float SubSyncCosts = getSubSyncCosts(CVRSpawnableComponent);
@@ -428,7 +430,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             {
               // reset follower variables to default
               navMeshFollowerSetup.nmfConfigVariables = NMFSConfig.variables;
-              Debug.Log("Reset Follower Variables");
+              CoreLog("Reset Follower Variables");
             }
             // stop here as the user needs to update the config file or reset the follower variables
             return;
@@ -499,7 +501,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             {
               // reset follower variables to default
               navMeshFollowerSetup.nmfIKVariables = NMFSConfig.ik_variables;
-              Debug.Log("Reset Follower Variables");
+              CoreLog("Reset Follower Variables");
             }
             // stop here as the user needs to update the config file or reset the follower variables
             return;
@@ -894,7 +896,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             navMeshFollowerSetup.agent_stoppingDistance = 1.5f;
             navMeshFollowerSetup.agent_radius = 0.15f;
             navMeshFollowerSetup.agent_height = 0.3f;
-            Debug.Log("Reset Follower Agent Settings");
+            CoreLog("Reset Follower Agent Settings");
           }
 
           GUILayout.Space(10);
@@ -941,7 +943,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             // disable navmeshagent component
             agent.enabled = false; // locked
 
-            Debug.Log("Added NavMeshAgent");
+            CoreLog("Added NavMeshAgent");
           }
 
           return;
@@ -1138,7 +1140,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             // zero out position and rotation
             navMeshFollowerConfigObjectLevelTwo.transform.localPosition = Vector3.zero;
             navMeshFollowerConfigObjectLevelTwo.transform.localRotation = Quaternion.identity;
-            Debug.Log("Added NavMeshFollower Config Objects");
+            CoreLog("Added NavMeshFollower Config Objects");
           }
 
           // if checkup failed stop here
@@ -1874,7 +1876,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
             // zero out position and rotation
             navMeshFollowerConfigObjectLevelThree.transform.localPosition = Vector3.zero;
             navMeshFollowerConfigObjectLevelThree.transform.localRotation = Quaternion.identity;
-            Debug.Log("Added NavMeshFollower Config Objects");
+            CoreLog("Added NavMeshFollower Config Objects");
           }
           // if checkup failed stop here
           return;

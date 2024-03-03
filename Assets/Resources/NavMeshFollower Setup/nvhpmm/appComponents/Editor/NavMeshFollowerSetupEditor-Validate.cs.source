@@ -1,4 +1,4 @@
-// { "version": "2.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_VALIDATE", dependencies: []}
+// { "version": "2.0.1" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_VALIDATE", dependencies: []}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -10,6 +10,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 using uk.novavoidhowl.dev.navmeshfollowersetup;
 using uk.novavoidhowl.dev.navmeshfollowersetup.packagecore;
+using Constants = uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.Constants;
+using static uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.CoreUtils;
 // using NVHCommonUI = uk.novavoidhowl.dev.common.ui;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

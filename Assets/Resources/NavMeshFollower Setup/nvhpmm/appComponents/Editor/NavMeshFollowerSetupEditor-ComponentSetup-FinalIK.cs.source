@@ -1,4 +1,4 @@
-// { "version": "2.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_FINALIK", dependencies: ["NVH_FIK_EXISTS"]}
+// { "version": "2.0.1" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_FINALIK", dependencies: ["NVH_FIK_EXISTS"]}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -101,7 +101,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         }
         else
         {
-            Debug.Log("leftEyeBone is null");
+            CoreLog("leftEyeBone is null");
         }
 
         if (navMeshFollowerSetup.rightEyeBone != null)
@@ -112,7 +112,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         }
         else
         {
-            Debug.Log("rightEyeBone is null");
+            CoreLog("rightEyeBone is null");
         }
 
         // check if exoticEyesCount is greater than 0 and if exoticEyesMode is enabled
@@ -162,7 +162,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
 
 
       // print the fact that we added the LookAtIK component to the navMeshFollowerBody to the console
-      Debug.Log("Added LookAtIK component to navMeshFollowerBody");
+      CoreLog("Added LookAtIK component to navMeshFollowerBody");
 
 
     }

@@ -1,4 +1,4 @@
-// { "version": "1.0.2" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_LOOKUPS", dependencies: []}
+// { "version": "1.0.3" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_LOOKUPS", dependencies: []}
 using UnityEditor.PackageManager;
 using UnityEngine;
 using System;
@@ -11,6 +11,8 @@ using UnityEditor;
 using UnityEngine.Animations;
 using uk.novavoidhowl.dev.navmeshfollowersetup;
 using uk.novavoidhowl.dev.navmeshfollowersetup.packagecore;
+using Constants = uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.Constants;
+using static uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.CoreUtils;
 // using NVHCommonUI = uk.novavoidhowl.dev.common.ui;
 
 // Dynamic loads
@@ -202,7 +204,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       }
       else
       {
-        Debug.Log("Navmesh Follower Body detected");
+        CoreLog("Navmesh Follower Body detected");
         // Check if navMeshFollowerBody has an animator component
         Animator animator = navMeshFollowerBody.GetComponent<Animator>();
         if (animator == null)
@@ -212,12 +214,12 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         }
         else
         {
-          Debug.Log("Navmesh Follower Body has Animator component");
+          CoreLog("Navmesh Follower Body has Animator component");
           // Get the head bone transform directly from the animator
           Transform headBone = animator.GetBoneTransform(HumanBodyBones.Head);
           if (headBone != null)
           {
-            Debug.Log("Navmesh Follower Body has Head Bone");
+            CoreLog("Navmesh Follower Body has Head Bone");
             return headBone;
           }
           else
@@ -325,7 +327,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       }
       else
       {
-        Debug.Log("Navmesh Follower Body detected");
+        CoreLog("Navmesh Follower Body detected");
         // Check if navMeshFollowerBody has an animator component
         Animator animator = navMeshFollowerBody.GetComponent<Animator>();
         if (animator == null)
@@ -335,12 +337,12 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         }
         else
         {
-          Debug.Log("Navmesh Follower Body has Animator component");
+          CoreLog("Navmesh Follower Body has Animator component");
           // Get the left hand transform directly from the animator
           Transform leftHand = animator.GetBoneTransform(HumanBodyBones.LeftHand);
           if (leftHand != null)
           {
-            Debug.Log("Navmesh Follower Body has Left Hand");
+            CoreLog("Navmesh Follower Body has Left Hand");
             return leftHand;
           }
           else
@@ -363,7 +365,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       }
       else
       {
-        Debug.Log("Navmesh Follower Body detected");
+        CoreLog("Navmesh Follower Body detected");
         // Check if navMeshFollowerBody has an animator component
         Animator animator = navMeshFollowerBody.GetComponent<Animator>();
         if (animator == null)
@@ -373,12 +375,12 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         }
         else
         {
-          Debug.Log("Navmesh Follower Body has Animator component");
+          CoreLog("Navmesh Follower Body has Animator component");
           // Get the right hand transform directly from the animator
           Transform rightHand = animator.GetBoneTransform(HumanBodyBones.RightHand);
           if (rightHand != null)
           {
-            Debug.Log("Navmesh Follower Body has Right Hand");
+            CoreLog("Navmesh Follower Body has Right Hand");
             return rightHand;
           }
           else
@@ -401,7 +403,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       }
       else
       {
-        Debug.Log("Navmesh Follower Body detected");
+        CoreLog("Navmesh Follower Body detected");
         // Check if navMeshFollowerBody has an animator component
         Animator animator = navMeshFollowerBody.GetComponent<Animator>();
         if (animator == null)
@@ -411,12 +413,12 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         }
         else
         {
-          Debug.Log("Navmesh Follower Body has Animator component");
+          CoreLog("Navmesh Follower Body has Animator component");
           // Get the left eye bone transform directly from the animator
           Transform leftEyeBone = animator.GetBoneTransform(HumanBodyBones.LeftEye);
           if (leftEyeBone != null)
           {
-            Debug.Log("Navmesh Follower Body has Left Eye Bone");
+            CoreLog("Navmesh Follower Body has Left Eye Bone");
             return leftEyeBone;
           }
           else
@@ -439,7 +441,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       }
       else
       {
-        Debug.Log("Navmesh Follower Body detected");
+        CoreLog("Navmesh Follower Body detected");
         // Check if navMeshFollowerBody has an animator component
         Animator animator = navMeshFollowerBody.GetComponent<Animator>();
         if (animator == null)
@@ -449,12 +451,12 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
         }
         else
         {
-          Debug.Log("Navmesh Follower Body has Animator component");
+          CoreLog("Navmesh Follower Body has Animator component");
           // Get the right eye bone transform directly from the animator
           Transform rightEyeBone = animator.GetBoneTransform(HumanBodyBones.RightEye);
           if (rightEyeBone != null)
           {
-            Debug.Log("Navmesh Follower Body has Right Eye Bone");
+            CoreLog("Navmesh Follower Body has Right Eye Bone");
             return rightEyeBone;
           }
           else

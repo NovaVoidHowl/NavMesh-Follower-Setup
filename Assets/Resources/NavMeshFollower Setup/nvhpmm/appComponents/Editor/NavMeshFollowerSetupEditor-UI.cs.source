@@ -1,4 +1,4 @@
-// { "version": "1.0.1" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_UI", dependencies: []}
+// { "version": "1.0.2" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_UI", dependencies: []}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -10,6 +10,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 using uk.novavoidhowl.dev.navmeshfollowersetup;
 using uk.novavoidhowl.dev.navmeshfollowersetup.packagecore;
+using Constants = uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.Constants;
+using static uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.CoreUtils;
 
 #if NVH_COMMON_EXISTS
   using NVHCommonUI = uk.novavoidhowl.dev.common.ui;
@@ -95,7 +97,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
     {
       if (Constants.debug_mode)
       {
-        Debug.Log(message);
+        CoreLog(message);
       }
     }
 

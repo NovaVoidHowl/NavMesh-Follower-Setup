@@ -1,4 +1,4 @@
-// { "version": "1.0.0" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_L2", dependencies: ["NVH_FIK_EXISTS"]}
+// { "version": "1.0.1" , "canInstall": true , "optional": false , "defineSymbolSuffix": "_NMFSE_CS_L2", dependencies: ["NVH_FIK_EXISTS"]}
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -10,6 +10,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 using uk.novavoidhowl.dev.navmeshfollowersetup;
 using uk.novavoidhowl.dev.navmeshfollowersetup.packagecore;
+using Constants = uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.Constants;
+using static uk.novavoidhowl.dev.navmeshfollowersetup.packagecore.CoreUtils;
 // using NVHCommonUI = uk.novavoidhowl.dev.common.ui;
 
 // Dynamic loads
@@ -66,7 +68,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       if (scriptRootObject.transform.Find("[NavMeshFollower]")?.gameObject == null)
       {
         // should never be possible to reach this point, but just in case
-        Debug.Log("CRITICAL ERROR: [NavMeshFollower] gameObject not found");
+        CoreLogCritical(" [NavMeshFollower] gameObject not found");
         return;
       }
       else
@@ -79,7 +81,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup
       if (navMeshFollowerConfigObject.transform.Find("NavMeshAgent")?.gameObject == null)
       {
         //should never be possible to reach this point, but just in case
-        Debug.Log("CRITICAL ERROR: NavMeshAgent gameObject not found");
+        CoreLogCritical(" NavMeshAgent gameObject not found");
       }
       else
       {
