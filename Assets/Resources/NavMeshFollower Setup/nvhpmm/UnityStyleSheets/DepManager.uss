@@ -331,3 +331,7 @@ TemplateContainer {
 .componentTypeLabel{
   margin-right: 6px;
 }
+
+.installedVersionLabel{
+  margin-right: auto;
+}
