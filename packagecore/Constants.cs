@@ -11,7 +11,7 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup.packagecore
     public const string APP_COLOUR_CRIT = "#FF0000";
     public const string SCRIPTING_DEFINE_SYMBOL = "NVH_NMFS_EXISTS";
     public const string PACKAGE_NAME = "uk.novavoidhowl.dev.navmeshfollowersetup";
-    public const string ASSETS_MANAGED_FOLDER = "Assets/NovaVoidHowl/NavMeshFollowerSetup/Editor";
+    public const string ASSETS_MANAGED_FOLDER = "Assets/_NovaVoidHowl/NavMeshFollowerSetup/";
 
     public static readonly Color UI_UPDATE_OUT_OF_DATE_COLOR = new Color(1.0f, 0f, 0f); // Red
     public static readonly Color UI_UPDATE_OUT_OF_DATE_COLOR_TEXT = new Color(1.0f, 0.4f, 0.4f); // Red
