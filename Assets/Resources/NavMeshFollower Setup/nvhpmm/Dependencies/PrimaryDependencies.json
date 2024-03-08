@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "uk.novavoidhowl.dev.common",
+    "version": "https://github.com/NovaVoidHowl/Common-Unity-Resources.git#1.0.2",
+    "Description": "Common resources used in my Unity packages - NovaVoidHowl",
+    "Buttons": [
+      {
+        "ButtonLink": "https://github.com/NovaVoidHowl/Common-Unity-Resources",
+        "ButtonText": "GitHub Repository"
+      }
+    ]
+  
+  }
+]

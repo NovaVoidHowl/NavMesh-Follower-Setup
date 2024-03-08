@@ -1,0 +1,61 @@
+[
+  {
+    "Buttons": [
+      {
+        "ButtonLink": "https://docs.abinteractive.net/cck/setup/",
+        "ButtonText": "View CVR CCK Website"
+      }
+    ],
+    "DependencyType": "Mandatory",
+    "Description": "CVR CCK package",
+    "InstallCheckMode": "Scripting Define Symbol",
+    "InstallCheckValue": "CVR_CCK_EXISTS",
+    "Name": "CVR CCK"
+  },
+  {
+    "Buttons": [
+      {
+        "ButtonLink": "https://github.com/kafeijao/Kafe_CVR_CCKs/blob/master/NavMeshFollower/README.md",
+        "ButtonText": "View on Github (free asset)"
+      }
+    ],
+    "DependencyType": "Mandatory",
+    "Description": "CCK addon to create NavMesh Follower props. Requires CVR CCK to be installed.",
+    "InstallCheckMode": "Scripting Define Symbol",
+    "InstallCheckValue": "KAFE_CVR_CCK_NAV_MESH_FOLLOWER_EXISTS",
+    "Name": "NavMeshFollower"
+  },
+  {
+    "Buttons": [
+      {
+        "ButtonLink": "https://assetstore.unity.com/packages/tools/animation/final-ik-14290",
+        "ButtonText": "Full FinalIK, Asset Store (payed asset)"
+      },
+      {
+        "ButtonLink": "https://github.com/VRLabs/Final-IK-Stub",
+        "ButtonText": "Stub FinalIK, Github (free asset)"
+      }
+    ],
+    "DependencyType": "Mandatory",
+    "Description": "FinalIK package from unity registry (payed) or stub from github.",
+    "InstallCheckMode": "Scripting Define Symbol",
+    "InstallCheckValue": "NVH_FIK_EXISTS",
+    "Name": "FinalIK"
+  },
+  {
+    "Buttons": [],
+    "DependencyType": "Mandatory",
+    "Description": "Newtonsoft.Json package from unity registry",
+    "InstallCheckMode": "Package Manager Implicit",
+    "InstallCheckValue": "com.unity.nuget.newtonsoft-json",
+    "Name": "Newtonsoft.Json"
+  },
+  {
+    "Buttons": [],
+    "DependencyType": "Mandatory",
+    "Description": "Unity vector graphics package from unity registry",
+    "InstallCheckMode": "Package Manager Implicit",
+    "InstallCheckValue": "com.unity.vectorgraphics",
+    "Name": "Unity Vector Graphics"
+  }
+]

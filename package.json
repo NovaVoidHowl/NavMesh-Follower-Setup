@@ -5,6 +5,10 @@
     "url": "https://novavoidhowl.uk/"
   },
   "changelogUrl": "https://github.com/NovaVoidHowl/NavMesh-Follower-Setup/releases",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.0.2",
+    "com.unity.vectorgraphics": "2.0.0-preview.21"
+  },
   "description": "Script to automate the setup of the components needed to make a nav mesh follower",
   "displayName": "NavMesh Follower Setup",
   "documentationUrl": "https://github.com/NovaVoidHowl/NavMesh-Follower-Setup/blob/main/README.md",
@@ -17,5 +21,5 @@
   },
   "unity": "2021.3",
   "unityRelease": "23f1",
-  "version": "1.0.0"
+  "version": "3.2.0"
 }
