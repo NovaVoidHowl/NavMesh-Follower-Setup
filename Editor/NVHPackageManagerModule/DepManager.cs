@@ -158,6 +158,26 @@ namespace uk.novavoidhowl.dev.navmeshfollowersetup.nvhpmm
       // Apply the StyleSheet
       rootVisualElement.styleSheets.Add(stylesheet);
 
+      // get the full path to the root of the unity project
+      string projectRoot = Directory.GetParent(Application.dataPath).FullName;
+      // get the length of the projectRoot string
+      int projectRootLength = projectRoot.Length;
+
+      // print the path length to the console
+      CoreLog("projectRootLength : " + projectRootLength);
+
+      // if the projectRootLength is more that 56, then show an error popup
+      if (projectRootLength > 56)
+      {
+        EditorUtility.DisplayDialog(
+          "Project Path Too Long",
+          "The path to the project is too long\n" +
+          "(more than 56 chars)\n\n" +
+          "Please move the project to a shorter path.",
+          "OK"
+        );
+      }
+
       // Get the containers
       var scrollViewsContainer = rootVisualElement.Q("scrollViewContainer");
       var primaryDependenciesContainer = rootVisualElement.Q("primaryDependenciesContainer");

@@ -5,6 +5,16 @@
 This editor script/app is to assist in setting up Nav Mesh Followers, as supported by the Mod by @kafeijao.  
 The readme for the CCK plugin for this is https://github.com/kafeijao/Kafe_CVR_CCKs/tree/master/NavMeshFollower#readme  
 
+## Path Length Issues (Unity Behaviour)
+If you find that the 'App Components' section of the Tool Setup window is not showing up, then it could be that your project folder has too long a path for the legacy default Windows max path length.
+
+In version 3.3.0, you will get a warning about this when you open the `Tool Setup` window, if the path is too long.
+
+Unity observes this old limit, thus long paths (more than 56 chars including project name, the rest is used up in the internals of the project paths) will cause the list to not show up.
+
+Sadly it is not possible to work around this issue as it is a Unity imposed limitation (even the Windows group policy setting `Enable Win32 long paths` has no impact on it )
+ 
+
 ## How to install this package
 
 1> In unity open the `Package Manager` window
@@ -50,7 +60,4 @@ add your follower under that object
 
 now select the root object of your follower and run through the setup as guided by the component  
 ![image](https://github.com/NovaVoidHowl/NavMesh-Follower-Setup/assets/31048789/66b79e2d-07f3-40ff-aafa-fa2467fd0254)
-
-
-
 
